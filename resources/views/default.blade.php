@@ -24,8 +24,8 @@
 
                             <div class="col-md-12">
                                <input class="form-control" type="text" name="name" placeholder="Full Name" required autocomplete="off">
-                               <div class="valid-feedback">Username field is valid!</div>
-                               <div class="invalid-feedback">Username field cannot be blank!</div>
+                               <div class="valid-feedback">Fullname field is valid!</div>
+                               <div class="invalid-feedback">Fullname field cannot be blank!</div>
                             </div>
 
                             <div class="col-md-12">
@@ -36,18 +36,19 @@
 
                             <div class="col-md-12">
                                 <select class="form-select mt-3" name="country" required>
+                                <option selected disabled value="">Country</option>
                                 @foreach ($countries as $country)
                                     <option value="{{ $country }}">{{ $country }}</option>
                                 @endforeach
                                </select>
-                                <div class="valid-feedback">You selected a position!</div>
-                                <div class="invalid-feedback">Please select a position!</div>
+                                <div class="valid-feedback">You selected a country!</div>
+                                <div class="invalid-feedback">Please select a country!</div>
                            </div>
 
                             <div class="col-md-12">
-                                <input class="form-control" type="text" name="location" placeholder="Location" required>
-                                 <div class="valid-feedback">Email field is valid!</div>
-                                 <div class="invalid-feedback">Email field cannot be blank!</div>
+                                <input class="form-control" type="text" name="city" placeholder="City" required>
+                                 <div class="valid-feedback">City field is valid!</div>
+                                 <div class="invalid-feedback">City field cannot be blank!</div>
                             </div>
                   
                             <div class="form-button mt-3">
@@ -59,6 +60,6 @@
             </div>
         </div>
     </div>
-
+<script type="text/javascript" src="{{ asset('asset/js/app.js') }}"></script>
 </body>
 </html>

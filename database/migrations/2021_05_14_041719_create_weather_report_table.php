@@ -15,6 +15,11 @@ class CreateWeatherReportTable extends Migration
     {
         Schema::create('weather_report', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 100);
+            $table->string('email', 100);
+            $table->string('country', 50);
+            $table->string('city', 100);
+            $table->longText('report');
             $table->timestamps();
         });
     }
