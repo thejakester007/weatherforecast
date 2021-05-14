@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Monarobase\CountryList\CountryListFacade;
 use App\Services\Weather;
+use App\Models\WeatherReport;
 
 class IndexController extends Controller
 {
@@ -25,12 +26,22 @@ class IndexController extends Controller
                 $objectParams = $object->getParams($params);
                 $query = Http::get($value['url'], $objectParams);
                 $temp[] = $object->getResult($query->body());
-                $data = [
-                    'city' => $request->get('city'),
-                    'country' => $request->get('country'),
-                    'temperature' => array_sum($temp) / count($temp)
-                ];
             }
+
+            $data = [
+                'city' => $request->get('city'),
+                'country' => $request->get('country'),
+                'temperature' => array_sum($temp) / count($temp)
+            ];
+
+            // save data
+            $model = new WeatherReport;
+            $model->name = $request->get('name');
+            $model->email = $request->get('email');
+            $model->country = $request->get('country');
+            $model->city = $request->get('city');
+            $model->report = json_encode($data);
+            $model->save();
         }
 
         $countries = CountryListFacade::getList('en');
