@@ -4,21 +4,20 @@ namespace App\Services;
 
 use \App\Services\Interfaces\WeatherInterface;
 
-class OpenWeather implements WeatherInterface
+class WeatherStack implements WeatherInterface
 {
     public function getResult($body) 
-    {
+    { 
         $response = json_decode($body, true);
         
-        return $response['main']['temp'];
+        return $response['current']['temperature'];
     }
 
     public function getParams($params)
     {
         $formattedParams = [
-            'q' => "{$params['city']}, {$params['country']}",
-            'appid' => $params['api'],
-            'units' => 'metric'
+            'query' => "{$params['city']}, {$params['country']}",
+            'access_key' => $params['api']
         ];
 
         return $formattedParams;

@@ -4,5 +4,7 @@ namespace App\Services\Interfaces;
 
 interface WeatherInterface 
 {
-    public function getResult();
+    public function getResult($body);
+
+    public function getParams($params);
 }
