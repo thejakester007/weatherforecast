@@ -60,6 +60,11 @@
                         </div>
                     @else
                         <div class="form-items">
+                            @isset($data['error'])
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>We're sorry!</strong> {{ $data['error'] }}
+                            </div>
+                            @endisset
                             <h3>Your Weather Forecast for today</h3>
                             <p>{{ $data['city'] }}, {{ $data['country']}}</p>
                             <div class="text">
